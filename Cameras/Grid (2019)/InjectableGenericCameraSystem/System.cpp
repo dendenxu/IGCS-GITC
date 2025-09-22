@@ -1213,7 +1213,9 @@ namespace IGCS
 		const auto& gamePaused = s.gamePaused(); // reference, will be updated
 		const bool& slowMo = s.sloMo();
 
-		CameraManipulator::cachetimespeed(); //its going to be paused
+		if (!gamePaused) {
+			CameraManipulator::cachetimespeed(); //its going to be paused
+		}
 		// if (!gamePaused && !slowMo)
 		// {
 		// 	CameraManipulator::cachetimespeed(); //its going to be paused
@@ -1370,33 +1372,79 @@ namespace IGCS
 
 	void System::stepCameraforIGCSSession(float stepAngle)
 	{
-		if (!_IGCSConnectorSessionActive)
+		if (!_IGCSConnectorSessionActive) {
+			MessageHandler::addNotification("stepCameraforIGCSSession (angle): IGCS session not active, skipping.");
 			return;
-		stepAngle = stepAngle / Globals::instance().settings().rotationSpeed;
-		Camera::instance().targetYaw(stepAngle);
+		}
+		auto& Camera = Camera::instance();
+
+		{
+			char buf[128];
+			snprintf(buf, sizeof(buf), "stepCameraforIGCSSession (angle): Applying stepAngle = %f", stepAngle);
+			MessageHandler::addNotification(buf);
+		}
+
+		// Camera.addLookAtYawOffset(stepAngle);
+		auto yaw = Camera.getYaw() + XMConvertToRadians(stepAngle);
+		Camera.setYaw(yaw);
+		Camera.calculateLookQuaternion();
+		CameraManipulator::updateCameraDataInGameData();
+		Camera.resetAngles();
+
+		MessageHandler::addNotification("stepCameraforIGCSSession (angle): Camera yaw offset applied and angles reset.");
 	}
 
 
 	void System::stepCameraforIGCSSession(float stepLeftRight, float stepUpDown, float fovDegrees, bool fromStartPosition)
 	{
-		if (!_IGCSConnectorSessionActive)
+		if (!_IGCSConnectorSessionActive) {
+			MessageHandler::addNotification("stepCameraforIGCSSession (move): IGCS session not active, skipping.");
 			return;
+		}
 
 		const auto s = Globals::instance().settings();
 		auto& Camera = Camera::instance();
 
 		const float movementspeed = s.movementSpeed;
 		const float upmovementmultiplier = s.movementUpMultiplier;
-		if (fromStartPosition)
+
+		{
+			char buf[256];
+			snprintf(buf, sizeof(buf), "stepCameraforIGCSSession (move): stepLeftRight=%f, stepUpDown=%f, fovDegrees=%f, fromStartPosition=%d",
+				stepLeftRight, stepUpDown, fovDegrees, fromStartPosition ? 1 : 0);
+			MessageHandler::addNotification(buf);
+		}
+
+		if (fromStartPosition) {
 			Camera.setInternalPosition(_igcscacheData.Coordinates);
+			char buf[256];
+			snprintf(buf, sizeof(buf), "stepCameraforIGCSSession (move): Reset camera position to cached coordinates (%.3f, %.3f, %.3f)",
+				_igcscacheData.Coordinates.x, _igcscacheData.Coordinates.y, _igcscacheData.Coordinates.z);
+			MessageHandler::addNotification(buf);
+		}
 		
-		Camera.moveRight(stepLeftRight / movementspeed,false);
+		Camera.moveRight(stepLeftRight / movementspeed, false);
 		Camera.moveUp((stepUpDown / movementspeed) / upmovementmultiplier, false);
-		if (fovDegrees>0)
-			CameraManipulator::restoreFOV(XMConvertToRadians(fovDegrees)); // Change if game uses degrees
+
+		{
+			char buf[128];
+			snprintf(buf, sizeof(buf), "stepCameraforIGCSSession (move): Camera moved right by %f, up by %f",
+				stepLeftRight / movementspeed, (stepUpDown / movementspeed) / upmovementmultiplier);
+			MessageHandler::addNotification(buf);
+		}
+
+		if (fovDegrees > 0) {
+			CameraManipulator::changeFoV(XMConvertToRadians(fovDegrees)); // Change if game uses degrees
+			// Camera.setFoV(XMConvertToRadians(fovDegrees), true);
+			char buf[128];
+			snprintf(buf, sizeof(buf), "stepCameraforIGCSSession (move): FOV set to %f degrees (%f radians)", fovDegrees, XMConvertToRadians(fovDegrees));
+			MessageHandler::addNotification(buf);
+		}
 		
 		CameraManipulator::updateCameraDataInGameData();
 		Camera.resetMovement();
+
+		MessageHandler::addNotification("stepCameraforIGCSSession (move): Camera data updated and movement reset.");
 	}
 
 }
