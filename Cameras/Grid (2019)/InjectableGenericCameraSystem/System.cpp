@@ -1042,7 +1042,7 @@ namespace IGCS
 		NamedPipeManager::instance().startListening();
 		InputHooker::setInputHooks();
 		Input::registerRawInput();
-		MemoryPatcher::initialize();
+		// MemoryPatcher::initialize();
 
 		//Initialise hooks (D3D, window etc)
 		initializeHooks();
