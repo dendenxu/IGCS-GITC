@@ -1,0 +1,43 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/Cameras/Armored Core 6/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Dark Souls 3/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Dirt Rally 2.0/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Final Fantasy XIII/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Final Fantasy XIII-2/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/GranBlue Fantasy Relink/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Grid (2019)/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Lightning Returns/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Resident Evil 7/InjectableGenericCameraSystem",
+                "${workspaceFolder}/Cameras/Sekiro/InjectableGenericCameraSystem",
+                "${workspaceFolder}/dependencies/stb",
+                "${workspaceFolder}/dependencies/MinHook/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.22631.0",
+            "compilerPath": "cl.exe",
+            "cStandard": "c23",
+            "cppStandard": "c++23"
+        }
+    ],
+    "version": 4
+}
+
+//   Armored Core 6
+//   Dark Souls 3
+//   Dirt Rally 2.0
+//   Final Fantasy XIII
+//   Final Fantasy XIII-2
+//   GranBlue Fantasy Relink
+//   Grid (2019)
+//   Lightning Returns
+//   Resident Evil 7
+//   Sekiro

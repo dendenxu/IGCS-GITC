@@ -1210,30 +1210,31 @@ namespace IGCS
 	{
 		auto& s = Globals::instance();
 
-		const auto& gamePaused = s.gamePaused();
+		const auto& gamePaused = s.gamePaused(); // reference, will be updated
 		const bool& slowMo = s.sloMo();
 
-		if (!gamePaused && !slowMo)
-		{
-			CameraManipulator::cachetimespeed(); //its going to be paused
-			//add code nop here = true
-		}
-		if (!gamePaused && slowMo)
-		{
-			//it's going to be paused while in slowmotion so set slowmo flag to false
-			Globals::instance().sloMo(false); //set the slowmo flag to false
-		}
-		if (gamePaused && slowMo)
-		{
-			//it's going to be unpaused but slowmoflag true so set slotmo flag to false
-			Globals::instance().sloMo(false); //set the slowmo flag to false
-			//add code nop here = false
-		}
-		if (gamePaused && !slowMo)
-		{
-			//it's going to be unpaused
-			//add code nop here = false
-		}
+		CameraManipulator::cachetimespeed(); //its going to be paused
+		// if (!gamePaused && !slowMo)
+		// {
+		// 	CameraManipulator::cachetimespeed(); //its going to be paused
+		// 	//add code nop here = true
+		// }
+		// if (!gamePaused && slowMo)
+		// {
+		// 	//it's going to be paused while in slowmotion so set slowmo flag to false
+		// 	Globals::instance().sloMo(false); //set the slowmo flag to false
+		// }
+		// if (gamePaused && slowMo)
+		// {
+		// 	//it's going to be unpaused but slowmoflag true so set slotmo flag to false
+		// 	Globals::instance().sloMo(false); //set the slowmo flag to false
+		// 	//add code nop here = false
+		// }
+		// if (gamePaused && !slowMo)
+		// {
+		// 	//it's going to be unpaused
+		// 	//add code nop here = false
+		// }
 
 		s.toggleGamePaused();
 		CameraManipulator::setTimeStopValue(gamePaused);
@@ -1249,30 +1250,31 @@ namespace IGCS
 	{
 		auto& s = Globals::instance();
 
-		const auto& gamePaused = s.gamePaused();
+		const auto& gamePaused = s.gamePaused(); // reference, will be updated
 		const bool& slowMo = s.sloMo();
 
-		if (!slowMo && !gamePaused)
-		{
-			CameraManipulator::cachetimespeed();
-			// add code nop here = true
-		}
-		if (!slowMo && gamePaused)
-		{
-			//slowmotion to be enabled while in pause, disable pause
-			Globals::instance().gamePaused(false);
-		}
-		if (slowMo && gamePaused)
-		{
-			//slowmotion to be disabled while in pause, disable pause
-			Globals::instance().gamePaused(false);
-			// add code nop here = false
-		}
-		if (slowMo && !gamePaused)
-		{
-			//returning to normal speed - no actions to take
-			//add code nop here = false
-		}
+		// CameraManipulator::cacheslowmospeed();
+		// if (!slowMo && !gamePaused)
+		// {
+		// 	CameraManipulator::cachetimespeed();
+		// 	// add code nop here = true
+		// }
+		// if (!slowMo && gamePaused)
+		// {
+		// 	//slowmotion to be enabled while in pause, disable pause
+		// 	Globals::instance().gamePaused(false);
+		// }
+		// if (slowMo && gamePaused)
+		// {
+		// 	//slowmotion to be disabled while in pause, disable pause
+		// 	Globals::instance().gamePaused(false);
+		// 	// add code nop here = false
+		// }
+		// if (slowMo && !gamePaused)
+		// {
+		// 	//returning to normal speed - no actions to take
+		// 	//add code nop here = false
+		// }
 
 		s.toggleSlowMo();
 		CameraManipulator::setSlowMo(s.settings().gameSpeed, slowMo);

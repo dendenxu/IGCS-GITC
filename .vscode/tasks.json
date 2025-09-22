@@ -1,0 +1,355 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      // Armored Core 6
+      {
+        "label": "Build Armored Core 6 Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Armored Core 6/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Armored Core 6 Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Armored Core 6/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Dark Souls 3
+      {
+        "label": "Build Dark Souls 3 Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Dark Souls 3/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Dark Souls 3 Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Dark Souls 3/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Dirt Rally 2.0
+      {
+        "label": "Build Dirt Rally 2.0 Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Dirt Rally 2.0/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Dirt Rally 2.0 Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Dirt Rally 2.0/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Final Fantasy XIII
+      {
+        "label": "Build Final Fantasy XIII Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Final Fantasy XIII/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Final Fantasy XIII Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Final Fantasy XIII/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Final Fantasy XIII-2
+      {
+        "label": "Build Final Fantasy XIII-2 Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Final Fantasy XIII-2/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Final Fantasy XIII-2 Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Final Fantasy XIII-2/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // GranBlue Fantasy Relink
+      {
+        "label": "Build GranBlue Fantasy Relink Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/GranBlue Fantasy Relink/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build GranBlue Fantasy Relink Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/GranBlue Fantasy Relink/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Grid (2019)
+      {
+        "label": "Build Grid (2019) Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Grid (2019)/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Grid (2019) Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Grid (2019)/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Lightning Returns
+      {
+        "label": "Build Lightning Returns Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Lightning Returns/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Lightning Returns Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Lightning Returns/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Resident Evil 7
+      {
+        "label": "Build Resident Evil 7 Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Resident Evil 7/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Resident Evil 7 Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Resident Evil 7/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+
+      // Sekiro
+      {
+        "label": "Build Sekiro Camera Tools (Release, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Sekiro/CameraTools.sln",
+          "/p:Configuration=Release",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Build Sekiro Camera Tools (Debug, x64)",
+        "type": "shell",
+        "command": "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/MSBuild.exe",
+        "args": [
+          "${workspaceFolder}/Cameras/Sekiro/CameraTools.sln",
+          "/p:Configuration=Debug",
+          "/p:Platform=x64",
+          "/m"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$msCompile"
+      }
+    ]
+  }
+
+//   Armored Core 6
+//   Dark Souls 3
+//   Dirt Rally 2.0
+//   Final Fantasy XIII
+//   Final Fantasy XIII-2
+//   GranBlue Fantasy Relink
+//   Grid (2019)
+//   Lightning Returns
+//   Resident Evil 7
+//   Sekiro
