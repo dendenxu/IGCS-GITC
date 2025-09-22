@@ -114,6 +114,8 @@ namespace IGCS
 		void toggleHud();
 		
 		void toggleSlowMo(bool displaynotification = true);
+		void increaseGameSpeed(bool displaynotification = true);
+		void decreaseGameSpeed(bool displaynotification = true);
 		void handleSkipFrames();
 		void updateDeltaTime();
 

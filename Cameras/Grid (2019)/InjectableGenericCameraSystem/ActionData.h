@@ -73,6 +73,8 @@ namespace IGCS
 		MoveUpTarget = 38,
 		MoveDownTarget = 39,
 
+		IncreaseGameSpeed = 40,
+		DecreaseGameSpeed = 41,
 		Amount,
 	};
 

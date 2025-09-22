@@ -186,7 +186,10 @@ namespace IGCS
 		_keyBindingPerActionType[ActionType::TiltRight] = new ActionData("TiltRight", IGCS_KEY_TILT_RIGHT, false, false, false);
 		_keyBindingPerActionType[ActionType::Timestop] = new ActionData("Timestop", IGCS_KEY_TIMESTOP, false, false, false);
 		_keyBindingPerActionType[ActionType::SkipFrames] = new ActionData("SkipFrames", IGCS_KEY_SKIP_FRAMES, false, false, false);
-		_keyBindingPerActionType[ActionType::SlowMo] = new ActionData("SlowMo", IGCS_KEY_SLOWMO, false, false, false);
+		_keyBindingPerActionType[ActionType::SlowMo] = new ActionData("SlowMo", IGCS_KEY_SLOWMO, true, false, false);
+		_keyBindingPerActionType[ActionType::IncreaseGameSpeed] = new ActionData("IncreaseGameSpeed", IGCS_KEY_INCREASE_GAME_SPEED, false, false, false);
+		_keyBindingPerActionType[ActionType::DecreaseGameSpeed] = new ActionData("DecreaseGameSpeed", IGCS_KEY_DECREASE_GAME_SPEED, false, false, false);
+
 		_keyBindingPerActionType[ActionType::HUDtoggle] = new ActionData("HUDtoggle", IGCS_KEY_HUD, false, false, false);
 		_keyBindingPerActionType[ActionType::CycleDepthBuffers] = new ActionData("CycleDepthBuffers", IGCS_KEY_CYCLEDEPTH, false, false, false);
 		_keyBindingPerActionType[ActionType::ToggleDepthBuffer] = new ActionData("ToggleDepthBuffer", IGCS_KEY_PATH_TOGGLE_DEPTH, false, false, true);

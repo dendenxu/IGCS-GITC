@@ -1285,6 +1285,28 @@ namespace IGCS
 
 	}
 
+	void System::increaseGameSpeed(bool displaynotification)
+	{
+		auto& s = Globals::instance();
+		s.settings().gameSpeed += 0.5f;
+		s.settings().gameSpeed = min(s.settings().gameSpeed, 2.0f);
+		if (displaynotification)
+		{
+			MessageHandler::addNotification("Game speed increased to " + std::to_string(s.settings().gameSpeed));
+		}
+	}
+
+	void System::decreaseGameSpeed(bool displaynotification)
+	{
+		auto& s = Globals::instance();
+		s.settings().gameSpeed -= 0.5f;
+		s.settings().gameSpeed = max(s.settings().gameSpeed, 0.5f);
+		if (displaynotification)
+		{
+			MessageHandler::addNotification("Game speed decreased to " + std::to_string(s.settings().gameSpeed));
+		}
+	}
+
 	void System::toggledepthBufferUsage()
 	{
 		//D3DHook::instance().toggleDepthBufferUsage();
@@ -1348,7 +1370,7 @@ namespace IGCS
 	{
 		if (!_IGCSConnectorSessionActive)
 			return;
-		
+		stepAngle = stepAngle / Globals::instance().settings().rotationSpeed;
 		Camera::instance().targetYaw(stepAngle);
 	}
 
