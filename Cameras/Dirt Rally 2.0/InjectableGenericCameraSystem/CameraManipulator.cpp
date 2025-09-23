@@ -195,6 +195,11 @@ namespace IGCS::GameSpecific::CameraManipulator
 		cachedGamespeedSlowMo = *gameSpeedInMemory;
 	}
 
+	void cachetimespeed(float speed)
+	{
+		cachedGamespeedPause = speed;
+	}
+
 	float getNearZ()
 	{
 		if (!g_cameraQuaternionAddress)
@@ -240,6 +245,16 @@ namespace IGCS::GameSpecific::CameraManipulator
 		return 1000.0f;
 	}
 
+	float getCachedTimescale()
+	{
+		return cachedGamespeedPause;
+	}
+
+	float getCachedSlowMoTimescale()
+	{
+		return cachedGamespeedSlowMo;
+	}
+
 	// This timestop is based on game speed. So if the game has to be paused, we will write a 0.0f (or 0.00001f). 
 	// If the game has to be unpaused, we'll write a 1.0f.
 	void setTimeStopValue(bool pauseGame)
@@ -257,7 +272,7 @@ namespace IGCS::GameSpecific::CameraManipulator
 			return;
 
 		const auto gameSpeedInMemory = reinterpret_cast<float*>(g_timescaleAddress + TIMESCALE_OFFSET);
-		*gameSpeedInMemory = slowMo ? amount : cachedGamespeedPause;
+		*gameSpeedInMemory = slowMo ? amount : 1.0;
 	}
 
 	// Resets the FOV to the one it got when we enabled the camera

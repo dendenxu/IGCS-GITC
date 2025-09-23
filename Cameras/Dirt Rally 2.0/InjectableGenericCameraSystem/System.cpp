@@ -1172,14 +1172,24 @@ namespace IGCS
 
 		if (!gamePaused) {
 			CameraManipulator::cachetimespeed(); //its going to be paused
+			MessageHandler::addNotification("Cached current game speed for pause");
+			if (slowMo) {
+				CameraManipulator::cachetimespeed(s.settings().gameSpeed);
+				MessageHandler::addNotification("Cached slow motion game speed: " + std::to_string(s.settings().gameSpeed));
+			}
 			//add code nop here = true
-			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
-		} else {
+			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
+		} 
+		
+		if (!slowMo && gamePaused) {
 			//add code nop here = false
-			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
+			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
 		}
 
 		s.toggleGamePaused();
+
+		float valueToUse = gamePaused ? 0.0f : CameraManipulator::getCachedTimescale();
+		MessageHandler::addNotification("Setting game speed to: " + std::to_string(valueToUse));
 		CameraManipulator::setTimeStopValue(gamePaused);
 		
 
@@ -1197,10 +1207,12 @@ namespace IGCS
 		const bool& slowMo = s.sloMo();
 		if (!slowMo) {
 			//add code nop here = true
-			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
-		} else {
+			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
+		}
+
+		if (slowMo && !gamePaused) {
 			//add code nop here = false
-			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
+			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
 		}
 		s.toggleSlowMo();
 		CameraManipulator::setSlowMo(s.settings().gameSpeed, slowMo);
@@ -1274,6 +1286,7 @@ namespace IGCS
 		auto& Camera = Camera::instance();
 
 		// Camera.addLookAtYawOffset(stepAngle);
+		// auto yaw = Camera.getYaw() + stepAngle;
 		auto yaw = Camera.getTargetYaw() + stepAngle;
 		Camera.setYaw(yaw);
 		Camera.setTargetYaw(yaw);
@@ -1306,6 +1319,7 @@ namespace IGCS
 		
 		if (fovDegrees > 0) {
 			CameraManipulator::changeFoV(XMConvertToRadians(fovDegrees)); // Change if game uses degrees
+			// CameraManipulator::restoreFOV(CameraManipulator::fovinRadians(fovDegrees));
 		}
 
 		CameraManipulator::updateCameraDataInGameData();

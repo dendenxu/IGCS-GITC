@@ -4,6 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}",
+
                 "${workspaceFolder}/Cameras/Armored Core 6/InjectableGenericCameraSystem",
                 "${workspaceFolder}/Cameras/Dark Souls 3/InjectableGenericCameraSystem",
                 "${workspaceFolder}/Cameras/Dirt Rally 2.0/InjectableGenericCameraSystem",
@@ -14,6 +15,7 @@
                 "${workspaceFolder}/Cameras/Lightning Returns/InjectableGenericCameraSystem",
                 "${workspaceFolder}/Cameras/Resident Evil 7/InjectableGenericCameraSystem",
                 "${workspaceFolder}/Cameras/Sekiro/InjectableGenericCameraSystem",
+
                 "${workspaceFolder}/dependencies/stb",
                 "${workspaceFolder}/dependencies/MinHook/include"
             ],

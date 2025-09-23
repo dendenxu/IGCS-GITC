@@ -59,7 +59,7 @@ namespace IGCS
 	#define BYTE_PAUSE									0x00
 	#define BYTE_RESUME									0x01
 	#define MULTIPLICATION_ORDER						Utils::EulerOrder::YXZ
-	#define NEGATE_PITCH								true
+	#define NEGATE_PITCH								false
 	#define NEGATE_YAW									true
 	#define NEGATE_ROLL									false
 	#define RAD_TO_DEG_FACTOR							(180.0f / XM_PI)

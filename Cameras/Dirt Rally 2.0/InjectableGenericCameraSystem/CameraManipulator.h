@@ -65,6 +65,10 @@ namespace IGCS::GameSpecific::CameraManipulator
 	void cacheGameAddresses(GameAddressData& destination);
 	void cachetimespeed();
 	void cacheslowmospeed();
+	void cachetimespeed(float speed);
+	float getCachedTimescale();
+	float getCachedSlowMoTimescale();
+
 	DirectX::XMFLOAT3 getEulers();
 	void setCurrentCameraCoords(DirectX::XMFLOAT3 coords);
 	float getNearZ();
