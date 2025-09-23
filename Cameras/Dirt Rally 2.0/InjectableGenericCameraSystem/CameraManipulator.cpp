@@ -257,7 +257,7 @@ namespace IGCS::GameSpecific::CameraManipulator
 			return;
 
 		const auto gameSpeedInMemory = reinterpret_cast<float*>(g_timescaleAddress + TIMESCALE_OFFSET);
-		*gameSpeedInMemory = slowMo ? amount * cachedGamespeedPause : cachedGamespeedPause;
+		*gameSpeedInMemory = slowMo ? amount : cachedGamespeedPause;
 	}
 
 	// Resets the FOV to the one it got when we enabled the camera

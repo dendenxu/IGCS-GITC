@@ -1162,36 +1162,21 @@ namespace IGCS
 	}
 
 
+
 	void System::toggleGamePause(bool displayNotification)
 	{
 		auto& s = Globals::instance();
 
-		const auto& gamePaused = s.gamePaused();
+		const auto& gamePaused = s.gamePaused(); // reference, will be updated
 		const bool& slowMo = s.sloMo();
 
-		if (!gamePaused && !slowMo)
-		{
+		if (!gamePaused) {
 			CameraManipulator::cachetimespeed(); //its going to be paused
 			//add code nop here = true
-			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
-		}
-		if (!gamePaused && slowMo)
-		{
-			//it's going to be paused while in slowmotion so set slowmo flag to false
-			Globals::instance().sloMo(false); //set the slowmo flag to false
-		}
-		if (gamePaused && slowMo)
-		{
-			//it's going to be unpaused but slowmoflag true so set slotmo flag to false
-			Globals::instance().sloMo(false); //set the slowmo flag to false
+			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
+		} else {
 			//add code nop here = false
-			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
-		}
-		if (gamePaused && !slowMo)
-		{
-			//it's going to be unpaused
-			//add code nop here = false
-			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
+			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
 		}
 
 		s.toggleGamePaused();
@@ -1208,34 +1193,15 @@ namespace IGCS
 	{
 		auto& s = Globals::instance();
 
-		const auto& gamePaused = s.gamePaused();
+		const auto& gamePaused = s.gamePaused(); // reference, will be updated
 		const bool& slowMo = s.sloMo();
-
-		if (!slowMo && !gamePaused)
-		{
-			CameraManipulator::cachetimespeed();
-			// add code nop here = true
-			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
-		}
-		if (!slowMo && gamePaused)
-		{
-			//slowmotion to be enabled while in pause, disable pause
-			Globals::instance().gamePaused(false);
-		}
-		if (slowMo && gamePaused)
-		{
-			//slowmotion to be disabled while in pause, disable pause
-			Globals::instance().gamePaused(false);
-			// add code nop here = false
-			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
-		}
-		if (slowMo && !gamePaused)
-		{
-			//returning to normal speed - no actions to take
+		if (!slowMo) {
+			//add code nop here = true
+			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, true);
+		} else {
 			//add code nop here = false
-			Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
+			// Utils::toggleNOPState(_aobBlocks[TIMESCALE_NOP], 8, false);
 		}
-
 		s.toggleSlowMo();
 		CameraManipulator::setSlowMo(s.settings().gameSpeed, slowMo);
 		
@@ -1302,32 +1268,48 @@ namespace IGCS
 
 	void System::stepCameraforIGCSSession(float stepAngle)
 	{
-		if (!_IGCSConnectorSessionActive)
+		if (!_IGCSConnectorSessionActive) {
 			return;
-		
-		Camera::instance().targetYaw(stepAngle);
+		}
+		auto& Camera = Camera::instance();
+
+		// Camera.addLookAtYawOffset(stepAngle);
+		auto yaw = Camera.getTargetYaw() + stepAngle;
+		Camera.setYaw(yaw);
+		Camera.setTargetYaw(yaw);
+		Camera.calculateLookQuaternion();
+		CameraManipulator::updateCameraDataInGameData();
+		// Camera.resetAngles();
+
 	}
 
 
 	void System::stepCameraforIGCSSession(float stepLeftRight, float stepUpDown, float fovDegrees, bool fromStartPosition)
 	{
-		if (!_IGCSConnectorSessionActive)
+		if (!_IGCSConnectorSessionActive) {
 			return;
+		}
 
 		const auto s = Globals::instance().settings();
+		auto& Camera = Camera::instance();
 
 		const float movementspeed = s.movementSpeed;
 		const float upmovementmultiplier = s.movementUpMultiplier;
-		if (fromStartPosition)
-			Camera::instance().setInternalPosition(_igcscacheData.Coordinates);
-		
-		Camera::instance().moveRight(stepLeftRight / movementspeed,false);
-		Camera::instance().moveUp((stepUpDown / movementspeed) / upmovementmultiplier, false);
-		if (fovDegrees>0)
-			CameraManipulator::restoreFOV(CameraManipulator::fovinRadians(fovDegrees));
-		
-		CameraManipulator::updateCameraDataInGameData();
-		Camera::instance().resetMovement();
-	}
 
+
+		if (fromStartPosition) {
+			Camera.setInternalPosition(_igcscacheData.Coordinates);
+		}
+		
+		Camera.moveRight(stepLeftRight / movementspeed, false);
+		Camera.moveUp((stepUpDown / movementspeed) / upmovementmultiplier, false);
+		
+		if (fovDegrees > 0) {
+			CameraManipulator::changeFoV(XMConvertToRadians(fovDegrees)); // Change if game uses degrees
+		}
+
+		CameraManipulator::updateCameraDataInGameData();
+		Camera.resetMovement();
+
+	}
 }
